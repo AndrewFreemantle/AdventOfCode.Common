@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>AdventOfCode</RootNamespace>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageId>AndrewFreemantle.AdventOfCode.Common</PackageId>
+    <Title>Advent of Code Common Types and Utilities</Title>
+    <Version>0.0.1</Version>
+    <Authors>Andrew Freemantle</Authors>
+    <Description>A collection of Plain Old CLR Object types and algorithm implementations that support solving Advent of Code puzzles</Description>
+    <RepositoryUrl>https://github.com/AndrewFreemantle/AdventOfCode.Common</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/AndrewFreemantle/AdventOfCode.Common</PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="/"/>
+    <None Include="LICENSE" Pack="true" PackagePath="/"/>
+  </ItemGroup>
+
+</Project>
