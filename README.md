@@ -16,10 +16,10 @@ using AdventOfCode.Types;
 var point = new Point(x, y);
 ```
 
-### Utils / Algorithms
+### Utils & Algorithms
 
 #### Least Common Multiple <sup><a href="https://en.wikipedia.org/wiki/Least_common_multiple">Wikipedia</a></sup>
-> The smallest positive integer that is divisible by both a and b. Useful for finding the alignment of the simultaneous moving objects (gears, planets, loops/routes).
+> The smallest positive integer that is divisible by both a and b. Useful for finding the alignment of simultaneous moving objects (gears, planets, loops/routes).
 
 ``` csharp
 using AdventOfCode;
@@ -36,4 +36,14 @@ using AdventOfCode;
 ...
 
 var gcd = Utils.GreatestCommonDivisor(a, b);
+```
+
+### Extension Methods
+
+`string[]` extensions
+
+``` csharp
+using AdeventOfCode;
+...
+string[] rotatedGrid = grid.RotateClockwise();  // 90&#176; to the right
 ```
