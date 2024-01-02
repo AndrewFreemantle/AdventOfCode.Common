@@ -19,6 +19,8 @@ jobs:
         dotnet-version: 8.0.x
     - name: Restore dependencies
       run: dotnet restore
+    - name: Copy README into package
+      run: cp README.md AdventOfCode.Common/README.md
     - name: Build project
       run: dotnet build --configuration Release --no-restore
     - name: Create package
@@ -27,7 +29,7 @@ jobs:
       uses: actions/upload-artifact@v3.1.3
       with:
         name: package
-        path: bin/Release/AndrewFreemantle.AdventOfCode.Common.*.nupkg
+        path: AdventOfCode.Common/bin/Release/AndrewFreemantle.AdventOfCode.Common.*.nupkg
 
   publish-package-to-github:
     needs: build-package
@@ -42,13 +44,13 @@ jobs:
     - name: Publish package to GitHub
       run: dotnet nuget push "AndrewFreemantle.AdventOfCode.Common.*.nupkg" --source github --skip-duplicate
 
-  # publish-package-to-nuget:
-  #   needs: build-package
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #   - name: Download built package
-  #     uses: actions/download-artifact@v3.0.2
-  #     with:
-  #       name: package
-  #   - name: Publish package to NuGet
-  #     run: dotnet nuget push "AndrewFreemantle.AdventOfCode.Common.*.nupkg" --source "https://api.nuget.org/v3/index.json" --api-key "${{ secrets.NUGET_API_KEY }}" --skip-duplicate
+  publish-package-to-nuget:
+    needs: build-package
+    runs-on: ubuntu-latest
+    steps:
+    - name: Download built package
+      uses: actions/download-artifact@v3.0.2
+      with:
+        name: package
+    - name: Publish package to NuGet
+      run: dotnet nuget push "AndrewFreemantle.AdventOfCode.Common.*.nupkg" --source "https://api.nuget.org/v3/index.json" --api-key "${{ secrets.NUGET_API_KEY }}" --skip-duplicate
