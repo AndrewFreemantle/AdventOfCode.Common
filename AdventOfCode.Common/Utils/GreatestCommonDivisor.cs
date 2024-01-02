@@ -1,5 +1,9 @@
+// ReSharper disable once CheckNamespace
 namespace AdventOfCode;
 
+/// <summary>
+/// Common utility functions
+/// </summary>
 public partial class Utils
 {
   /// <summary>

@@ -9,14 +9,18 @@ To provide a toolbox of common or generic implementations without detracting fro
 ### Types
 
 #### `Point`
+A simple `x`, `y` (and optional `z`) encapsulation object that implements equality and clone
 ``` csharp
 using AdventOfCode.Types;
 ...
 
-var point = new Point(x, y);
+var point = new Point(x, y[, z]);
+
+var newPoint = point.Clone();
+var areEqual = point == newPoint; // true
 ```
 
-### Utils & Algorithms
+### Algorithms
 
 #### Least Common Multiple <sup><a href="https://en.wikipedia.org/wiki/Least_common_multiple">Wikipedia</a></sup>
 > The smallest positive integer that is divisible by both a and b. Useful for finding the alignment of simultaneous moving objects (gears, planets, loops/routes).
@@ -38,6 +42,16 @@ using AdventOfCode;
 var gcd = Utils.GreatestCommonDivisor(a, b);
 ```
 
+### Enumerations
+
+#### Direction
+``` csharp
+using AdventOfCode;
+...
+var directionOfTravel = Direction.Up; /* Down, Left, Right or None */
+```
+
+
 ### Extension Methods
 
 `string[]` extensions
@@ -45,5 +59,5 @@ var gcd = Utils.GreatestCommonDivisor(a, b);
 ``` csharp
 using AdeventOfCode;
 ...
-string[] rotatedGrid = grid.RotateClockwise();  // 90&#176; to the right
+string[] rotatedGrid = grid.RotateClockwise();  // 90° to the right
 ```

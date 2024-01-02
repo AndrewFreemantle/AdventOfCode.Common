@@ -1,5 +1,8 @@
 namespace AdventOfCode;
 
+/// <summary>
+/// Collection of extension methods for <see cref="string"/>[]
+/// </summary>
 public static class StringArrayExtensions
 {
     /// <summary>

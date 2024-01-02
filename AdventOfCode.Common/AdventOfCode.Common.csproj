@@ -12,7 +12,7 @@
   <PropertyGroup>
     <PackageId>AndrewFreemantle.AdventOfCode.Common</PackageId>
     <Title>Advent of Code Common Types and Utilities</Title>
-    <Version>0.0.3</Version>
+    <Version>0.0.4</Version>
     <Authors>Andrew Freemantle</Authors>
     <Description>A collection of Plain Old CLR Object types and algorithm implementations that support solving Advent of Code puzzles</Description>
     <RepositoryUrl>https://github.com/AndrewFreemantle/AdventOfCode.Common</RepositoryUrl>
@@ -22,8 +22,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="README.md" Pack="true" PackagePath="/"/>
-    <None Include="LICENSE" Pack="true" PackagePath="/"/>
+    <None Include="../README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
