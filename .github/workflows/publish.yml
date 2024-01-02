@@ -1,4 +1,4 @@
-name: Publish NuGet package
+name: Publish NuGet Package
 
 on:
   push:
@@ -19,9 +19,11 @@ jobs:
         dotnet-version: 8.0.x
     - name: Restore dependencies
       run: dotnet restore
-    - name: Copy README into package
-      run: cp README.md AdventOfCode.Common/README.md
-    - name: Build project
+    - name: Build project (debug)
+      run: dotnet build --configuration Debug --no-restore
+    - name: Run unit tests
+      run: dotnet test --no-build --nologo
+    - name: Build project (release)
       run: dotnet build --configuration Release --no-restore
     - name: Create package
       run: dotnet pack --configuration Release --no-build

@@ -1,6 +1,8 @@
 ## Andrew's Advent of Code common support library for C#
 
-A collection of <abbr>POCO</abbr> (Plain Old <abbr title="Common Language Runtime">CLR</abbr> Object) types and algorithm implementations that support solving [Advent of Code](https://adventofcode.com) puzzles.
+[![Publish Actions Status](https://github.com/AndrewFreemantle/AdventOfCode.Common/actions/workflows/publish.yml/badge.svg)](https://github.com/AndrewFreemantle/AdventOfCode.Common/actions/workflows/publish.yml)
+
+A collection of POCO (Plain Old CLR Object) types and algorithm implementations that support solving [Advent of Code](https://adventofcode.com) puzzles.
 
 ### Philosophy
 
