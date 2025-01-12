@@ -141,3 +141,15 @@ using AdeventOfCode;
 ...
 string[] rotatedGrid = grid.RotateClockwise();  // 90° to the right
 ```
+
+#### LINQ Extensions
+
+##### `Let()`
+Similar to `.Select()` but takes the entire object rather than enumerating over each item. Useful for converting the contents of an array into a single object:
+``` csharp
+var point = "1,2,3"
+    .Split(",")
+    .Select(int.Parse)
+    .ToArray()
+    .Let(arr => new Point(arr[0], arr[1], arr[2]));  // Point(1, 2, 3)
+```
