@@ -1,17 +1,17 @@
+// ReSharper disable once CheckNamespace
 namespace AdventOfCode;
-using Types;
 
 /// <summary>
-/// Collection of extension methods for <see cref="Point"/>
+/// Collection of extension methods for <see cref="Point{T}"/>
 /// </summary>
 public static class PointExtensions
 {
     /// <summary>
-    /// Returns true if the Point is contained within a given polygon
+    /// Returns true if the <see cref="Point{T}"/> is contained within a given polygon
     /// source: https://en.wikipedia.org/wiki/Even–odd_rule
     /// </summary>
-   public static bool IsPointInside(this Point point, List<Point> polygon)
-    {
+   public static bool IsPointInside<T>(this Point<T> point, List<Point<T>> polygon) where T : INumber<T>, IMinMaxValue<T>
+   {
         if (polygon.Contains(point))
             return true; // point is on the boundary
 
@@ -26,17 +26,17 @@ public static class PointExtensions
         if (!pointsToTheRight.Any())
             return false; // no points to the right either (so we're above or below the polygon)
 
-        var lastX = int.MinValue;
+        var lastX = T.MinValue;
         var numIntersections = 0;
         var isLine = false;         // used to collapse continuous points to their corners/ends
         foreach (var p in pointsToTheRight)
         {
-            if (isLine && lastX != p.X - 1)
+            if (isLine && lastX != p.X - T.One)
                 numIntersections++;
 
-            isLine = lastX == p.X - 1;
+            isLine = lastX == p.X - T.One;
 
-            if (lastX == int.MinValue || !isLine)
+            if (lastX == T.MinValue || !isLine)
                 numIntersections++;
 
             lastX = p.X;

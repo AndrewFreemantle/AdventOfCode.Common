@@ -1,6 +1,3 @@
-using AdventOfCode.Types;
-using Xunit;
-
 // ReSharper disable once CheckNamespace
 namespace AdventOfCode.UnitTests;
 
@@ -15,11 +12,11 @@ public class PointExtensionsSimpleTests
      * y
      */
 
-    private static readonly List<Point> SimpleSquarePolygon =
+    private static readonly List<Point<int>> SimpleSquarePolygon =
     [
-        new Point(1, 1), new Point(2, 1), new Point(3, 1),
-        new Point(1, 2),                      new Point(3, 2),
-        new Point(1, 3), new Point(2, 3), new Point(3, 3)
+        new (1, 1), new (2, 1), new (3, 1),
+        new (1, 2),             new (3, 2),
+        new (1, 3), new (2, 3), new (3, 3)
     ];
 
     [Fact]
@@ -33,33 +30,33 @@ public class PointExtensionsSimpleTests
     public void PointsAboveAreConsideredOutside()
     {
         for (int x = 0; x <= 4; x++)
-            Assert.False(new Point(x, 0).IsPointInside(SimpleSquarePolygon));
+            Assert.False(new Point<int>(x, 0).IsPointInside(SimpleSquarePolygon));
     }
 
     [Fact]
     public void PointsInsideAreConsideredInside()
     {
-        Assert.True(new Point(2, 2).IsPointInside(SimpleSquarePolygon));
+        Assert.True(new Point<int>(2, 2).IsPointInside(SimpleSquarePolygon));
     }
 
     [Fact]
     public void PointsBelowAreConsideredOutside()
     {
         for (int x = 0; x <= 4; x++)
-            Assert.False(new Point(x, 4).IsPointInside(SimpleSquarePolygon));
+            Assert.False(new Point<int>(x, 4).IsPointInside(SimpleSquarePolygon));
     }
 
     [Fact]
     public void PointsToTheLeftAreConsideredOutside()
     {
         for (int y = 0; y <= 4; y++)
-            Assert.False(new Point(0, y).IsPointInside(SimpleSquarePolygon));
+            Assert.False(new Point<int>(0, y).IsPointInside(SimpleSquarePolygon));
     }
 
     [Fact]
     public void PointsToTheRightAreConsideredOutside()
     {
         for (int y = 0; y <= 4; y++)
-            Assert.False(new Point(4, y).IsPointInside(SimpleSquarePolygon));
+            Assert.False(new Point<int>(4, y).IsPointInside(SimpleSquarePolygon));
     }
 }
