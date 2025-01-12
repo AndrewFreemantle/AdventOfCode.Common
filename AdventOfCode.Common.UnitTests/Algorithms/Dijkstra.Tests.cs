@@ -26,8 +26,8 @@ public class DijkstraTests
     public void DijkstraTestWithSimpleGraphSimpleCostAndCardinalNeighbours()
     {
         var maze = Maze.ToPoints(['#']);
-        var start = new Point<int>(1, 13);   // S
-        var end = new Point<int>(13, 1);     // E
+        var start = maze.First(p => p.Tile == 'S');
+        var end = maze.First(p => p.Tile == 'E');
 
         var result = Algorithms.Dijkstra(maze, start, end);
 
@@ -60,7 +60,7 @@ public class DijkstraTests
 
     public class DirectionalPointFactory<T> : IDirectionalPointFactory<T> where T : INumber<T>
     {
-        public DirectionalPoint<T> Create(T x, T y, T z, char tile)
+        public DirectionalPoint<T> Create(T x, T y, T? z, char tile)
         {
             return new DirectionalPoint<T>(x, y);
         }

@@ -16,10 +16,10 @@ A simple `x`, `y` (and optional `z`) encapsulation object that implements equali
 using AdventOfCode;
 ...
 
-var point = new Point(x, y[, z]);
+var point = new Point(x, y[, z, 'c']);
 
 var newPoint = point.Clone();
-var areEqual = point == newPoint; // true
+var areEqual = point == newPoint;  // true
 ```
 
 #### `Point<T>`
@@ -28,7 +28,7 @@ The underlying implementation of `Point` that allows for the `x`, `y` (and optio
 using AdventOfCode;
 ...
 
-var point = new Point<long>(x, y[, z, '.']);
+var point = new Point<long>(x, y[, z, 'c']);
 
 var newPoint = point.Clone();
 var areEqual = point == newPoint; // true
@@ -45,7 +45,7 @@ public class DirectionalPoint<T>(T x, T y, Direction direction = Direction.None)
 var point1 = new Point(1, 2, '.');
 var point2 = new Point(1, 2, '#');
 
-var areEqual = point1 == point2; // true;
+var areEqual = point1 == point2;  // true;
 ```
 
 ### Algorithms
@@ -97,13 +97,29 @@ Included is an overload that allows for `costFn` and `getNeighboursFn` implement
 
 `Dijkstra()` is also generic, and accepts inherited types of `Point<T>` to allow for metadata about each point, such as direction or their map/char value which can then be used by custom `costFn` and `getNeighboursFn`. Note that when using this overload, an implementation of `IPointFactory<TPoint, T>` must also be provided, which is passed to the `getNeighboursFn` to create the neighbouring points. 
 
+#### Bron–Kerbosch Algorithm <sup><a href="https://en.wikipedia.org/wiki/Bron–Kerbosch_algorithm">Wikipedia</a></sup>
+The Bron–Kerbosch algorithm is an enumeration algorithm for finding all maximal cliques in an undirected graph.
+
+That is, it lists all subsets of vertices with the two properties that each pair of vertices in one of the listed subsets is connected by an edge,
+and no listed subset can have any additional vertices added to it while preserving its complete connectivity.
+
+``` csharp
+var links = new Dictionary<string, HashSet<string>> { {"co", ["de", "ka", "ta"] }, { ... }, ... };
+
+var result = Algorithms.BronKerbosch(
+    new HashSet<string>(),
+    links.Keys.ToHashSet(),
+    new HashSet<string>(),
+    links);  // returns a List<HashSet<string>> of all cliques found, each HashSet is ordered
+```
+
 ### Enumerations
 
 #### Direction
 ``` csharp
 using AdventOfCode;
 ...
-var directionOfTravel = Direction.Up; /* Down, Left, Right or None */
+var directionOfTravel = Direction.Up;  // Down, Left, Right or None
 ```
 
 ### Extension Methods
@@ -114,7 +130,7 @@ var directionOfTravel = Direction.Up; /* Down, Left, Right or None */
 ``` csharp
 using AdeventOfCode;
 ...
-var points = maze.ToPoints()    // returns a HashSet<Point<int>>
+var points = maze.ToPoints()  // returns a HashSet<Point<int>>
 ```
 Includes overloads for `Point<T>` where `T` is a numeric datatype (i.e. `long`, `decimal`, etc)
 
