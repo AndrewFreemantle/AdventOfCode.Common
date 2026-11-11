@@ -8,6 +8,7 @@ on:
 
 permissions:
   id-token: write
+  packages: write
   contents: read
 
 jobs:
@@ -47,7 +48,7 @@ jobs:
       with:
         name: package
     - name: Publish package to GitHub
-      run: dotnet nuget push "AndrewFreemantle.AdventOfCode.Common.*.nupkg" --source github --skip-duplicate
+      run: dotnet nuget push "AndrewFreemantle.AdventOfCode.Common.*.nupkg" --source github --skip-duplicate --api-key "${{ secrets.GITHUB_TOKEN }}"
 
   publish-package-to-nuget:
     needs: build-package
